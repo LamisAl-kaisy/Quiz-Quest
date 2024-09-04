@@ -21,15 +21,15 @@ saveHighScore = (e) => {
     e.preventDefault();
 
     const score = {
-        score: Math.floor(Math.random()*100),
+        score: mostRecentScore,
         name: username.value
     };
     highScores.push(score);
 
     highScores.sort((a,b) => b.score - a.score)
 
-    highScores.splice(5);
+    highScores.splice(MAX_HIGH_SCORES);
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
-    window.location.assign('/');
+    window.location.assign('./index.html');
 };
